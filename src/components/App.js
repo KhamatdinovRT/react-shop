@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import './App.css';
 import Header from './Header';
+import {ShopList} from './ShopList';
+
 const App = () => (
-  <Header> </Header>
+  <div>
+    <Header/>
+    <ShopList></ShopList>
+  </div>
 )
 export default App;

@@ -3,3 +3,7 @@ body {
   padding: 0;
   font-family: 'Roboto', 'Noto', sans-serif;
 }
+
+#root {
+  padding-top: 128px;
+}

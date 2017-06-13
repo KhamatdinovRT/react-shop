@@ -1,0 +1,15 @@
+.item {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.item h2 {
+    margin: 32px 0;
+    font-size: 1.3em;
+    font-weight: 100;
+}
+
+.item img {
+    max-width: 100%;
+}
+

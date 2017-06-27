@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './ShopHome.css';
+import styles from'./ShopHome.css';
+import { Link } from 'react-router-dom'
+
 class ShopHome extends Component {
     constructor() {
         super();
@@ -38,12 +40,14 @@ class ShopHome extends Component {
         return (
             <div>
                 {this.state.categories.map ((item)=> (
-                     <div className="item">
-                        <img src={require("../"+ item.image)} alt=""/>
-                        <h2>Men's outerwear</h2>
+                     <div className={styles.item}>
+                        <Link to={`/list/${item.name}`}>
+                            <img src={require("../"+ item.image)} alt=""/>
+                        </Link>
+                        <h2>{item.title}</h2>
                      </div>    
                      )
-                )
+                    )
                 }
             </div>
         );

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './Tabs.css';
+import styles from './Tabs.css';
 
 const Tabs = () => (
-      <ul className="tabs">
-        <li className="tabs-item"> <a href="">Mens t-shirts</a></li>
-        <li className="tabs-item"> <a href="">Ladies t-shirts</a></li>
+      <ul role="navigation" className={styles.tabs}>
+        <li className={styles.tabsItem}> <a href="">Mens t-shirts</a></li>
+        <li className={styles.tabsItem}> <a href="">Ladies t-shirts</a></li>
       </ul>  
 )
 export default Tabs;

@@ -10,10 +10,12 @@ class App extends Component {
     return(
     <div>
         <Header/>
-        <Switch>
-          <Route exact path='/' component={ShopHome}/>
-          <Route path="/list" component={ShopList}/>
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path='/' component={ShopHome}/>
+            <Route path="/list/:category" component={ShopList}/>
+          </Switch>
+        </main>
     </div>
     );
   }

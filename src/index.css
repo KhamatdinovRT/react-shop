@@ -4,6 +4,6 @@ body {
   font-family: 'Roboto', 'Noto', sans-serif;
 }
 
-#root {
+main {
   padding-top: 128px;
 }

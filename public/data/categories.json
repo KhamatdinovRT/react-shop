@@ -1,0 +1,22 @@
+[
+    {
+        "name":  "mens_tshirts",
+        "title": "Men's T-Shirts",
+        "image": "data/images/mens_tshirts.jpg"
+    },
+    {
+        "name": "ladies_tshirts",
+        "title": "Ladies T-Shirts",
+        "image": "data/images/ladies_tshirts.jpg"
+    },
+    {
+        "name": "hats",
+        "title": "Hats",
+        "image": "data/images/hats.jpg"
+    },
+    {
+        "name": "new_arrivals",
+        "title": "New Arrivals",
+        "image": "data/images/new_arrivals.jpg"
+    }    
+]

@@ -32,7 +32,7 @@ class ShopHome extends Component {
                 {this.state.categories.map ((item)=> (
                      <div className={styles.item}>
                         <Link to={`/list/${item.name}`}>
-                            <img src={PUBLIC_URL + item.image} alt=""/>
+                            <div className={styles.shopImage}><img src={PUBLIC_URL + item.image} alt=""/></div>
                         </Link>
                         <h2>{item.title}</h2>
                      </div>    

@@ -1,12 +1,13 @@
 .container {
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1050px;
 }
 
 .item {
     margin-bottom: 40px;
     text-align: center;
     overflow: hidden;
+
 }
 
 .item:nth-of-type(3),
@@ -22,6 +23,26 @@
 }
 
 .item img {
-    width: 1050px;
+    /*width: 1050px;*/
+    max-height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9999px;
+    right: -9999px;
+    max-width: none;
+}
+
+.shop-image {
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .shop-image {
+        height: 200px;
+    }
 }
 

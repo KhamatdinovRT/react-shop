@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styles from'./ShopHome.css';
 import { Link } from 'react-router-dom';
+import ShopImage from './ShopImage';
 
 const PUBLIC_URL = process.env.PUBLIC_URL;
 
@@ -32,7 +32,7 @@ class ShopHome extends Component {
                 {this.state.categories.map ((item)=> (
                      <div className={styles.item}>
                         <Link to={`/list/${item.name}`}>
-                            <div className={styles.shopImage}><img src={PUBLIC_URL + item.image} alt=""/></div>
+                            <ShopImage src={PUBLIC_URL + item.image}></ShopImage>
                         </Link>
                         <h2>{item.title}</h2>
                      </div>    

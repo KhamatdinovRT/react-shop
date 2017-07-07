@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import styles from './Header.css';
 import Navbar from './Navbar';
 import Tabs from './Tabs';
@@ -31,9 +30,9 @@ class Header extends React.Component {
     }
   }
   render() {
-  return <header className={this.state.scrollingLock ? styles.header + ' ' + styles.hederScrolling : styles.header}>
-          <Navbar/>
-          <Tabs/>
+  return <header className={this.state.scrollingLock ? styles.header + ' ' + styles.headerScrolling : styles.header}>
+            <Navbar/>
+            <Tabs/>
         </header> 
   }
 }

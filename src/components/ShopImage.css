@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 767px) {
-    .shop-image {
+    .img-container {
         height: 200px;
     }
     .img {

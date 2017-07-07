@@ -29,8 +29,8 @@ class ShopHome extends Component {
         console.log(this.state.categories);
         return (
             <div className={styles.container}>
-                {this.state.categories.map ((item)=> (
-                     <div className={styles.item}>
+                {this.state.categories.map ((item,i)=> (
+                     <div key={i} className={styles.item}>
                         <Link to={`/list/${item.name}`}>
                             <ShopImage src={PUBLIC_URL + item.image}></ShopImage>
                         </Link>

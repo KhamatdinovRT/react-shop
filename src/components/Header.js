@@ -4,17 +4,24 @@ import Navbar from './Navbar';
 import Tabs from './Tabs';
 
 class Header extends React.Component {
-  constructor(props) {
-      super(props);
+  constructor() {
+      super();
       this.state = {
-        scrollingLock: false
+        scrollingLock: false,
+        smallScreen:window.innerWidth <= 768
       };
   }
   componentDidMount(){
       window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('resize', this.handleResize);
   }
   componentWillUnmount() {
       window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.setState({smallScreen:window.innerWidth <= 768})
   }
 
   handleScroll = () => {
@@ -31,8 +38,8 @@ class Header extends React.Component {
   }
   render() {
   return <header className={this.state.scrollingLock ? styles.header + ' ' + styles.headerScrolling : styles.header}>
-            <Navbar/>
-            <Tabs/>
+            <Navbar hideMenu={this.state.smallScreen}/>
+            <Tabs hideTabs={this.state.smallScreen}/>
         </header> 
   }
 }

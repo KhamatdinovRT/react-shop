@@ -1,4 +1,6 @@
 import React from 'react';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import styles from './Header.css';
 import Navbar from './Navbar';
 import Tabs from './Tabs';
@@ -8,7 +10,8 @@ class Header extends React.Component {
       super();
       this.state = {
         scrollingLock: false,
-        smallScreen:window.innerWidth <= 768
+        smallScreen:window.innerWidth <= 768,
+        drawerOpen:false
       };
   }
   componentDidMount(){
@@ -38,6 +41,15 @@ class Header extends React.Component {
   }
   render() {
   return <header className={this.state.scrollingLock ? styles.header + ' ' + styles.headerScrolling : styles.header}>
+            <Drawer
+              docked={false}
+              width={200}
+              open={this.state.drawerOpen}
+              onRequestChange={(open) => this.setState({open})}
+              >
+              <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
+              <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+            </Drawer>
             <Navbar hideMenu={this.state.smallScreen}/>
             <Tabs hideTabs={this.state.smallScreen}/>
         </header> 

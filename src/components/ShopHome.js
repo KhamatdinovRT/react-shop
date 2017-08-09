@@ -16,17 +16,21 @@ class ShopHome extends Component {
 
     loadCategories() {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'data/categories.json');
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                this.setState ({categories: JSON.parse(xhr.responseText)})
-            }
-        };
-        xhr.send();        
+        fetch('data/categories.json').then(
+            response=> response.json()
+        ).then (
+            json => this.setState ({categories:json})
+        )
+        // xhr.open('GET', 'data/categories.json');
+        // xhr.onload = () => {
+        //     if (xhr.status === 200) {
+        //         this.setState ({categories: JSON.parse(xhr.responseText)})
+        //     }
+        // };
+        // xhr.send();        
     }
 
     render() {
-        console.log(this.state.categories);
         return (
             <div className={styles.container}>
                 {this.state.categories.map ((item,i)=> (

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {toggleSideNav} from '../actions';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import './App.css';
 import Header from './Header';
-import {ShopList} from './ShopList';
+import ShopList from './ShopList';
 import {ShopHome} from './ShopHome';
 
 class App extends Component {
@@ -20,8 +20,10 @@ class App extends Component {
           open={this.props.sideNavIsOpen}
           onRequestChange={() => this.props.toggleSideNav()}
         >
-          <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+          <NavLink to="/list/mens_tshirts"><MenuItem onTouchTap={() => this.props.toggleSideNav()}>Men's T-Shirts</MenuItem></NavLink>
+          <NavLink to="/list/ladies_tshirts"><MenuItem onTouchTap={() => this.props.toggleSideNav()}>Ladies T-Shirts</MenuItem></NavLink>
+          <NavLink to="/list/hats"><MenuItem onTouchTap={() => this.props.toggleSideNav()}>Hats</MenuItem></NavLink>
+          <NavLink to="/list/new_arrivals"><MenuItem onTouchTap={() => this.props.toggleSideNav()}>New Arrivals</MenuItem></NavLink>        
         </Drawer>
         <main>
           <Switch>
@@ -35,7 +37,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  sideNavIsOpen: state.sideNavIsOpen
+  sideNavIsOpen: state.sideNav.sideNavIsOpen
 })
 
-export default connect (mapStateToProps, {toggleSideNav}, null, {pure: false}) (App);
+export default connect(mapStateToProps, {toggleSideNav}, null, {pure: false}) (App);

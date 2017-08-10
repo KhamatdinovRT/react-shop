@@ -46,4 +46,4 @@ class Header extends React.Component {
   }
 }
 
-export default connect(null, {toggleSideNav})(Header);
+export default connect(null, {toggleSideNav}, null, {pure:false})(Header);

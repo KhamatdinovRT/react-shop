@@ -1,0 +1,11 @@
+.list-item {
+    text-align: center;
+}
+
+.list-item img {
+    max-width: 300px;
+}
+
+.price {
+    color:#615c5c;
+}

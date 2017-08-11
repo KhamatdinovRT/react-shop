@@ -32,6 +32,7 @@ class ShopList extends Component {
             json => this.props.getProducts(json)
         )
     }
+    getLink = (link) => '/list/'+this.get_category()+'/'+link
     
     get_category = () => this.props.match.params.category;
 
@@ -45,7 +46,7 @@ class ShopList extends Component {
                 </header>
                 <div className={styles.listContainer}>
                     {this.props.products.map((item, i)=>(
-                        <ListItem title={item.title} image={'/'+item.image} price={item.price} key={i}></ListItem>
+                        <ListItem link={this.getLink(item.handle)} title={item.title} image={'/'+item.image} price={item.price} key={i}></ListItem>
                     ))}
                 </div>
                 <hr/>

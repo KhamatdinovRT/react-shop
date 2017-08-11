@@ -1,5 +1,6 @@
 [
   {
+    "handle": "outdoor-vibes-white",
     "title":"Outdoor Vibes White",
     "category":"mens_tshirts",
     "price":14.75,
@@ -7,13 +8,15 @@
     "image":"data/images/3235.jpg"
   },
   {
-   "title":"Painted Palms Charcoal",
-   "category":"mens_tshirts",
-   "price":20.85,
-   "description":"Stay casual and cool in this 100% organic pre-shrunk cotton T-shirt. Available in charcoal grey with full-color YouTube logo screened on front.",
-   "image":"data/images/3196.jpg"
+    "handle":"painted-palms-charcoal",
+    "title":"Painted Palms Charcoal",
+    "category":"mens_tshirts",
+    "price":20.85,
+    "description":"Stay casual and cool in this 100% organic pre-shrunk cotton T-shirt. Available in charcoal grey with full-color YouTube logo screened on front.",
+    "image":"data/images/3196.jpg"
   },
   {
+    "handle":"stockholm-tshir-pike",
     "title":"Stockholm T-shirt Pike",
     "category":"mens_tshirts",
     "price":22.15,

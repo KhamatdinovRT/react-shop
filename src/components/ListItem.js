@@ -1,15 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import ShopImage from './ShopImage';
 import styles from './ListItem.css';
 
-const ListItem = ({title, image, price}) => (
-    <div className={styles.listItem}>
-        <img src={image} />
-        <div>{title} 
-            <span className={styles.price}> - {price}$</span>
-        </div>   
-    </div>
+const ListItem = ({link, title, image, price}) => (
+    <NavLink to={link}>
+        <div className={styles.listItem}>
+            <img src={image} />
+            <div>{title} 
+                <span className={styles.price}> - {price}$</span>
+            </div>   
+        </div>
+    </NavLink>
 )
 
 export default ListItem;

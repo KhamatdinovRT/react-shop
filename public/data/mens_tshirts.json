@@ -1,5 +1,6 @@
 [
   {
+    "id": 6086,
     "handle": "outdoor-vibes-white",
     "title":"Outdoor Vibes White",
     "category":"mens_tshirts",
@@ -8,6 +9,7 @@
     "image":"data/images/3235.jpg"
   },
   {
+    "id": 4028,
     "handle":"painted-palms-charcoal",
     "title":"Painted Palms Charcoal",
     "category":"mens_tshirts",
@@ -16,6 +18,7 @@
     "image":"data/images/3196.jpg"
   },
   {
+    "id": 4368,    
     "handle":"stockholm-tshir-pike",
     "title":"Stockholm T-shirt Pike",
     "category":"mens_tshirts",

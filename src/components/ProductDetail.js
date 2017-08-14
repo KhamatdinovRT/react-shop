@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styles from'./ProductDetail.css';
 import { Link } from 'react-router-dom';
 import ShopImage from './ShopImage';
 
 class ProductDetail extends Component {
-    constructor() {
-        super();
-    }
     render() {
         return (
             <div >
@@ -16,4 +14,6 @@ class ProductDetail extends Component {
     }
 }
 
-export { ProductDetail }
+const mapStateToProps = state = ({products:state.products})
+
+export default connect(mapStateToProps, null, null, {pure:false})(ProductDetail)

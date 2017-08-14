@@ -9,6 +9,8 @@ class ShopHome extends Component {
         this.state = {
             categories: []
         }
+    }
+    componentDidMount() {
         this.loadCategories()
     }
 
@@ -19,13 +21,6 @@ class ShopHome extends Component {
         ).then (
             json => this.setState ({categories:json})
         )
-        // xhr.open('GET', 'data/categories.json');
-        // xhr.onload = () => {
-        //     if (xhr.status === 200) {
-        //         this.setState ({categories: JSON.parse(xhr.responseText)})
-        //     }
-        // };
-        // xhr.send();        
     }
 
     render() {

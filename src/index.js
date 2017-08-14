@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {applyMiddleware, createStore } from 'redux';
 import {Provider} from 'react-redux';
 import { logger } from 'redux-logger';
-import thunk from 'redux-thunk';
 import reducers from './reducers';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './components/App';
@@ -15,7 +14,7 @@ import {
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-const middleware = [ thunk, logger];
+const middleware = [logger];
 
 const store = createStore (
   reducers,

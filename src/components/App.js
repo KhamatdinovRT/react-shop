@@ -8,7 +8,6 @@ import './App.css';
 import Header from './Header';
 import ShopList from './ShopList';
 import {ShopHome} from './ShopHome';
-import {ProductDetail} from './ProductDetail';
 
 class App extends Component {
   render() {
@@ -30,7 +29,6 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={ShopHome}/>
             <Route path="/list/:category" component={ShopList}/>
-            <Route path="/list/:category/:product" component={ProductDetail}/>
           </Switch>
         </main>
     </div>

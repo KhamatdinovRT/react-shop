@@ -1,0 +1,17 @@
+.details-container {
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: center
+}
+
+.details {
+    width: 50%;
+}
+
+img {
+    max-width: 618px;
+}
+
+.descrcription {
+
+}

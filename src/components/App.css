@@ -1,9 +1,17 @@
 main {
   padding-top: 128px;
+  width:1050px;
+  margin: 0 auto;
 }
 
 [hidden] {
   display: none!important;
+}
+
+@media (max-width:1050px) {
+  main{
+      width: 100%;
+  }
 }
 
 @media (max-width:768px){

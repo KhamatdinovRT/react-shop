@@ -25,6 +25,5 @@ const products = (state = [], action) => {
 export default combineReducers ({
   sideNav,
   products
-}
-)
+})
   

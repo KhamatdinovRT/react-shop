@@ -10,8 +10,3 @@ export const getProducts = (products) => ({
     type:GET_PRODUCTS_LIST, 
     products:products
 })
-
-// export const getProductById = (id) => ({
-//     type:GET_PRODUCT_BY_ID,
-//     id:id
-// })

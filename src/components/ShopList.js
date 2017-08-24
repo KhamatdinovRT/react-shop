@@ -6,13 +6,9 @@ import ListItem from './ListItem';
 import styles from './ShopList.css';
 import { withRouter } from 'react-router-dom';
 import { Switch, Route, NavLink } from 'react-router-dom';
-import {ProductDetail} from  './ProductDetail';
+import ProductDetail from  './ProductDetail';
 
 class ShopList extends Component {
-    constructor (props) {
-        super(props)
-    }
-    
     componentDidMount(){
         this.get_Products()
     }

@@ -45,11 +45,11 @@ class ShopList extends Component {
                             <h1>{this.get_category()}</h1>
                             <hr/>
                         </header>
-                        <div className={styles.listContainer}>
+                         <div className={styles.listContainer}>
                             {this.props.products.map((item, i)=>(
                                 <ListItem link={this.getLink(item.handle)} title={item.title} image={'/'+item.image} price={item.price} key={i}></ListItem>
                             ))}
-                        </div>
+                        </div> 
                         <hr/>
                     </div>
                 )}/>
@@ -57,6 +57,10 @@ class ShopList extends Component {
         )
     }
 }
-const mapStateToProps = state => ({products:state.products})
+
+const productsToArray = products => 
+    Object.keys(products).map(id=>products[id])
+
+const mapStateToProps = state => ({products:productsToArray(state.productsById)})
 
 export default withRouter(connect(mapStateToProps, {getProducts}, null, {pure: false}) (ShopList));

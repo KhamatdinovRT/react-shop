@@ -4,52 +4,46 @@ import { Link } from 'react-router-dom';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import styles from './ProductDetail.css';
+import RaisedButton from 'material-ui/RaisedButton';
 
-
-const ProductDetail = ({product}) =>(
+const ProductDetail = ({product, onAddClick}) =>(
             product!==undefined ?
             <div className={styles.detailsContainer}>
                     <div className={styles.imgContainer}><img src={'/'+product.image} alt=""/> </div>
                     <div className={styles.details}>
                         <h1>{product.title}</h1>
-                        <div>{'$'+product.price}</div>
+                        <span className={styles.price}>{'$'+product.price}</span>
                         <SelectField
                                 floatingLabelText="Size"
                                 value={2}
-                                style={styles.customWidth}
+                                style={{
+                                    width: '100%'
+                                }}
                                 >
                                 <MenuItem value={1} primaryText="S" />
                                 <MenuItem value={2} primaryText="M" />
                                 <MenuItem value={3} primaryText="L" />
                                 <MenuItem value={4} primaryText="XL" />
                         </SelectField>
-                        <SelectField
-                                floatingLabelText="Quantity"
-                                value={1}
-                                style={styles.customWidth}
-                                >
-                                <MenuItem value={1} primaryText="1" />
-                                <MenuItem value={2} primaryText="2" />
-                                <MenuItem value={3} primaryText="3" />                   
-                                <MenuItem value={4} primaryText="4" />
-                        </SelectField>
+                        <RaisedButton onClick={()=>handleClick(product.id)} label="ADD TO CART"/>
                         <h2>Description</h2>
-                        <div className={styles.description}>{product.description}</div>
+                        <div className={styles.descrcription}>{product.description}</div>
                     </div>    
             
             </div>
             : null
 )
 
-const getProduct = (products, productName) => {
-    for (let item of products){
+const getProduct = (products, productName) =>
+    Object.keys(products).reduce ((obj, key)=>{
+        let item= products[key];
         if (item.handle===productName)
-            return item
-    }
-}
+            obj = item
+            return obj
+    },{})
 
 const mapStateToProps = (state, ownProps) => ({
-    product: getProduct(state.products, ownProps.match.params.product)
+    product: getProduct(state.productsById, ownProps.match.params.product)
 })
 
 export default connect(mapStateToProps, null, null, {pure:true})(ProductDetail)

@@ -1,13 +1,14 @@
 .details-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center
+    justify-content: center;
+    margin-top:32px;
 }
 
 .details {
     width: 50%;
     max-width: 400px;
-    margin-left: 15px;
+    margin-left: 35px;
 }
 
 .img-container {
@@ -26,8 +27,16 @@
     .details {
         width:80%;
     }
+
+    .details-container {
+        margin: 0;
+    }    
+}
+
+.price {
+  margin: 15px 0;  
 }
 
 .descrcription {
-
+    line-height: 1.5;
 }

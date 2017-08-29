@@ -1,29 +1,49 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-  sideNavIsOpen:false
+  sideNav: { sideNavIsOpen: false },
+  productsById: {},
+  cart: { addedProducts: [] }
 }
 
-const sideNav = (state = initialState, action) => {
+const sideNav = (state = initialState.sideNav, action) => {
   switch (action.type) {
     case 'TOGGLE_SIDENAV':
-      return {sideNavIsOpen:!state.sideNavIsOpen}
+      return { sideNavIsOpen: !state.sideNavIsOpen }
     default:
       return state
   }
 }
 
-const products = (state = [], action) => {
+const productsById = (state = initialState.productsById, action) => {
   switch (action.type) {
     case 'GET_PRODUCTS_LIST':
-      return action.products
+      return {
+        ...state,
+        ...action.products.reduce((obj, product) => {
+          obj[product.id] = product
+          return obj
+        }, {})
+      }
     default:
       return state
   }
 }
 
-export default combineReducers ({
+export const cart = (state = initialState.cart, action) => {
+  switch (action.type) {
+    case 'ADD_PRODUCT_TO_CART':
+      return {
+        ...state,
+        ...action.item
+      }
+    default:
+      return state
+  }
+}
+
+export default combineReducers({
   sideNav,
-  products
+  productsById,
+  cart
 })
-  

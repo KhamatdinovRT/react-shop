@@ -37,7 +37,6 @@ const productsById = (state = initialState.productsById, action) => {
 export const cart = (state = initialState.cart, action) => {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART:
-    debugger
     const {productId, size} = action.item
      let i = indexOfEntry(state.addedProducts, productId, size)
       if (i===-1){
@@ -46,9 +45,11 @@ export const cart = (state = initialState.cart, action) => {
           addedProducts:[...state.addedProducts, action.item]
         }
       }
-      else return {
-        ...state.cart
-      }
+      else return {...state.cart,
+        addedProducts:state.addedProducts.map((item)=>{
+          return item.productId==productId ? {...item, qty:++item.qty}: item
+        })}
+      
     default:
       return state
   }

@@ -1,21 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import {addToCart} from '../actions';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import styles from './ProductDetail.css';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const ProductDetail = ({product, onAddClick}) =>(
-            product!==undefined ?
-            <div className={styles.detailsContainer}>
+class ProductDetail extends Component {
+
+    state = {
+        selected:2
+    }
+
+    handleClick = (productId) => (e) => {
+        this.props.addToCart({
+            productId,
+            qty:1,
+            size:this.state.selected
+        })
+    }
+
+    handleChange = (e, index, value) => {
+        this.setState({selected:value})
+    }
+
+    render() {
+        const {product} = this.props
+            return (
+                product!==undefined ? 
+                <div className={styles.detailsContainer}>
                     <div className={styles.imgContainer}><img src={'/'+product.image} alt=""/> </div>
                     <div className={styles.details}>
                         <h1>{product.title}</h1>
                         <span className={styles.price}>{'$'+product.price}</span>
                         <SelectField
                                 floatingLabelText="Size"
-                                value={2}
+                                value={this.state.selected}
+                                onChange={this.handleChange}
                                 style={{
                                     width: '100%'
                                 }}
@@ -25,14 +46,16 @@ const ProductDetail = ({product, onAddClick}) =>(
                                 <MenuItem value={3} primaryText="L" />
                                 <MenuItem value={4} primaryText="XL" />
                         </SelectField>
-                        <RaisedButton onClick={()=>handleClick(product.id)} label="ADD TO CART"/>
+                        <RaisedButton onClick={this.handleClick(product.id)} label="ADD TO CART"/>
                         <h2>Description</h2>
                         <div className={styles.descrcription}>{product.description}</div>
-                    </div>    
+                    </div>
+                </div> 
+                : null 
+            )
             
-            </div>
-            : null
-)
+        }
+}
 
 const getProduct = (products, productName) =>
     Object.keys(products).reduce ((obj, key)=>{
@@ -46,4 +69,4 @@ const mapStateToProps = (state, ownProps) => ({
     product: getProduct(state.productsById, ownProps.match.params.product)
 })
 
-export default connect(mapStateToProps, null, null, {pure:true})(ProductDetail)
+export default connect(mapStateToProps, {addToCart})(ProductDetail)

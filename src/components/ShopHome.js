@@ -15,7 +15,6 @@ class ShopHome extends Component {
     }
 
     loadCategories() {
-        let xhr = new XMLHttpRequest();
         fetch('data/categories.json').then(
             response=> response.json()
         ).then (

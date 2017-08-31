@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {addToCart} from '../actions';
+import {getProduct} from '../reducers';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import styles from './ProductDetail.css';
@@ -14,7 +15,7 @@ class ProductDetail extends Component {
 
     handleClick = (productId) => (e) => {
         this.props.addToCart({
-            productId,
+            id:productId,
             qty:1,
             size:this.state.selected
         })
@@ -56,14 +57,6 @@ class ProductDetail extends Component {
             
         }
 }
-
-const getProduct = (products, productName) =>
-    Object.keys(products).reduce ((obj, key)=>{
-        let item= products[key];
-        if (item.handle===productName)
-            obj = item
-            return obj
-    },{})
 
 const mapStateToProps = (state, ownProps) => ({
     product: getProduct(state.productsById, ownProps.match.params.product)

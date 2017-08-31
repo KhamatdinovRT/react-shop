@@ -11,7 +11,7 @@ export const getProducts = (products) => ({
     products:products
 })
 
-export const addToCart = (item) => ({
+export const addToCart = (product) => ({
     type: ADD_PRODUCT_TO_CART,
-    item
+    product
 })

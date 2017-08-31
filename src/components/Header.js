@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {toggleSideNav} from '../actions';
+import {computeCartQty} from '../reducers';
 import styles from './Header.css';
 import Navbar from './Navbar';
 import Tabs from './Tabs';
@@ -40,10 +41,16 @@ class Header extends React.Component {
   }
   render() {
   return <header className={this.state.scrollingLock ? styles.header + ' ' + styles.headerScrolling : styles.header}>
-            <Navbar hideMenu={this.state.smallScreen} onToggleSideNav={()=>this.props.toggleSideNav()}/>
+            <Navbar hideMenu={this.state.smallScreen} 
+                    onToggleSideNav={()=>this.props.toggleSideNav()}
+                    cartQty={this.props.cartQty}/>
             <Tabs hideTabs={this.state.smallScreen}/>
         </header> 
   }
 }
 
-export default connect(null, {toggleSideNav}, null, {pure:false})(Header);
+const mapStateToProps = (state) => ({
+  cartQty: computeCartQty(state.cart.addedProducts)
+})
+
+export default connect(mapStateToProps, {toggleSideNav}, null, {pure:false})(Header);

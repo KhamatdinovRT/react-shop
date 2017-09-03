@@ -53,13 +53,6 @@ export const cart = (state = initialState.cart, action) => {
   }
 }
 
-export const acart = (state = "", action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-}
-
 export default combineReducers({
   sideNav,
   productsById,
@@ -79,15 +72,25 @@ const indexOfEntry = (array, id, size) => {
 
 export const computeCartQty = addedProducts => {
   return addedProducts.reduce((count, product)=>{
-    count+=product.qty
+    count += product.qty
     return count;
   }, 0)
 }
 
 export const getProduct = (products, productName) =>
-Object.keys(products).reduce ((obj, key)=>{
-    let item= products[key];
-    if (item.handle===productName)
-        obj = item
-        return obj
-},{})
+  Object.keys(products).reduce((obj, key)=>{
+      let item = products[key];
+      if (item.handle===productName)
+          obj = item
+          return obj
+  },{})
+
+export const getTotal = state => {
+  const {addedProducts} = state.cart
+  return addedProducts.reduce((total, item, index)=> {
+    let id = addedProducts[index].id
+    let price = state.productsById[id].price
+    total += addedProducts[index].qty * price
+    return total
+  }, 0)
+}

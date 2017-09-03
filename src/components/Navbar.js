@@ -11,12 +11,13 @@ const Navbar = ({ hideMenu, onToggleSideNav, cartQty }) => (
       <nav className={styles.navbar}>
             <div hidden={!hideMenu}><img role="presentation" onClick={onToggleSideNav} src={menu} /></div>
             <div className={styles.logo}><Link to="/">SHOP</Link></div>
-            <Badge
-                  badgeContent={cartQty}
-                  primary={true}
-            >
-                  <NotificationsIcon />
-            </Badge>
+            <Link to = "/cart">
+                  <Badge
+                        badgeContent={cartQty}
+                        primary={true}>
+                        <NotificationsIcon />
+                  </Badge>
+            </Link>
       </nav>
 )
 

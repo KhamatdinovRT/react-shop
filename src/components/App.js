@@ -8,6 +8,7 @@ import './App.css';
 import Header from './Header';
 import ShopList from './ShopList';
 import {ShopHome} from './ShopHome';
+import Cart from './Cart';
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={ShopHome}/>
             <Route path="/list/:category" component={ShopList}/>
+            <Route path="/cart" component={Cart}/>
           </Switch>
         </main>
     </div>

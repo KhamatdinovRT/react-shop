@@ -1,0 +1,17 @@
+.container {
+    padding: 0 24px;
+}
+
+.center {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.checkout {
+    text-align: right;
+    font-weight: bold;
+}
+
+.total{
+    margin: 0 20px;
+}

@@ -78,7 +78,7 @@ export const computeCartQty = addedProducts => {
 }
 
 export const getProduct = (products, productName) =>
-  Object.keys(products).reduce((obj, key)=>{
+  Object.keys(products).reduce((obj, key)=> {
       let item = products[key];
       if (item.handle===productName)
           obj = item
@@ -86,11 +86,18 @@ export const getProduct = (products, productName) =>
   },{})
 
 export const getTotal = state => {
-  const {addedProducts} = state.cart
-  return addedProducts.reduce((total, item, index)=> {
-    let id = addedProducts[index].id
-    let price = state.productsById[id].price
-    total += addedProducts[index].qty * price
+  return state.cart.addedProducts.reduce((total, product)=> {
+    let price = state.productsById[product.id].price
+    total += product.qty * price
     return total
-  }, 0)
+  }, 0).toFixed(2)
+}
+
+export const getCartProducts = state => {
+  const {addedProducts} = state.cart
+  return addedProducts.map((product, index)=>{
+    return {
+      ...state.productsById[product.id], ...product
+    }
+  })
 }

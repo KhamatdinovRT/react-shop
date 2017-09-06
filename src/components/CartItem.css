@@ -1,0 +1,46 @@
+.list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 25px;
+    flex-grow: 1;
+    align-self: normal;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.flexbox img {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.name {
+    flex-grow: 1;
+}
+
+.detail {
+    width: 160px;
+    color:#757575;
+    flex-grow: 1;
+}
+
+.details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width:768px) {
+    .list {
+        flex-direction: column;
+        align-items: baseline;
+    }
+    
+    .details {
+        /* flex-direction: column; */
+    }
+}

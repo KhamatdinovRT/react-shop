@@ -35,24 +35,25 @@ class ShopList extends Component {
     get_category = () => this.props.match.params.category;
 
     render() {
+        const ProductsList = (
+            <div>
+                <ShopImage src={'/data/images/' + this.get_category()+'.jpg'}/>
+                <header className={styles.header}>
+                    <h1>{this.get_category()}</h1>
+                    <hr/>
+                </header>
+                <div className={styles.listContainer}>
+                    {this.props.products.map((item, i)=>(
+                        <ListItem link={this.getLink(item.handle)} title={item.title} image={'/'+item.image} price={item.price} key={i}></ListItem>
+                    ))}
+                </div> 
+                <hr/>
+            </div>
+        )
         return (
             <div>
                 <Route path="/list/:category/:product" component={ProductDetail}/>
-                <Route exact path="/list/:category" render={()=>(
-                    <div>
-                        <ShopImage src={'/data/images/' + this.get_category()+'.jpg'}/>
-                        <header className={styles.header}>
-                            <h1>{this.get_category()}</h1>
-                            <hr/>
-                        </header>
-                         <div className={styles.listContainer}>
-                            {this.props.products.map((item, i)=>(
-                                <ListItem link={this.getLink(item.handle)} title={item.title} image={'/'+item.image} price={item.price} key={i}></ListItem>
-                            ))}
-                        </div> 
-                        <hr/>
-                    </div>
-                )}/>
+                <Route exact path="/list/:category" render={()=>ProductsList}/>
             </div>
         )
     }

@@ -6,11 +6,13 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import styles from './ProductDetail.css';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 
 class ProductDetail extends Component {
 
     state = {
-        selected:2
+        selected:"M",
+        snackBar: false
     }
 
     handleClick = (productId) => (e) => {
@@ -18,6 +20,9 @@ class ProductDetail extends Component {
             id:productId,
             qty:1,
             size:this.state.selected
+        })
+        this.setState({
+            snackBar:true
         })
     }
 
@@ -27,6 +32,14 @@ class ProductDetail extends Component {
 
     render() {
         const {product} = this.props
+        const SnackBar = (
+            <Snackbar
+                open={this.state.snackBar}
+                message="Added to cart"
+                autoHideDuration={1500}
+                onRequestClose={this.handleRequestClose}
+            />
+        )
             return (
                 product!==undefined ? 
                 <div className={styles.detailsContainer}>
@@ -42,16 +55,17 @@ class ProductDetail extends Component {
                                     width: '100%'
                                 }}
                                 >
-                                <MenuItem value={1} primaryText="S" />
-                                <MenuItem value={2} primaryText="M" />
-                                <MenuItem value={3} primaryText="L" />
-                                <MenuItem value={4} primaryText="XL" />
+                                <MenuItem value={"S"} primaryText="S" />
+                                <MenuItem value={"M"} primaryText="M" />
+                                <MenuItem value={"L"} primaryText="L" />
+                                <MenuItem value={"XL"} primaryText="XL" />
                         </SelectField>
                         <RaisedButton onClick={this.handleClick(product.id)} label="ADD TO CART"/>
                         <h2>Description</h2>
                         <div className={styles.descrcription}>{product.description}</div>
                     </div>
-                </div> 
+                    {SnackBar}
+                </div>
                 : null 
             )
             
